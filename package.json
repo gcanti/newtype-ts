@@ -1,0 +1,44 @@
+{
+  "name": "newtype-ts",
+  "version": "0.0.1",
+  "description": "Implementation of newtypes in TypeScript",
+  "files": ["lib"],
+  "main": "lib/index.js",
+  "typings": "lib/index.d.ts",
+  "scripts": {
+    "lint": "tslint src/**/*.ts test/**/*.ts",
+    "typings-checker": "typings-checker --allow-expect-error --project typings-checker/tsconfig.json typings-checker/index.ts",
+    "mocha": "mocha -r ts-node/register test/*.ts",
+    "prettier": "prettier --no-semi --single-quote --print-width 120 --parser typescript --list-different \"{src,test}/**/*.ts\"",
+    "test": "npm run prettier && npm run lint && npm run typings-checker && npm run mocha",
+    "clean": "rm -rf lib/*",
+    "build": "npm run clean && tsc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gcanti/newtype-ts.git"
+  },
+  "author": "Giulio Canti <giulio.canti@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/gcanti/newtype-ts/issues"
+  },
+  "homepage": "https://github.com/gcanti/newtype-ts",
+  "dependencies": {
+    "fp-ts": "^0.4.6",
+    "monocle-ts": "^0.3.2"
+  },
+  "devDependencies": {
+    "@types/mocha": "2.2.38",
+    "@types/node": "8.0.19",
+    "mocha": "3.2.0",
+    "prettier": "1.5.2",
+    "ts-node": "3.3.0",
+    "tslint": "4.4.2",
+    "tslint-config-standard": "4.0.0",
+    "typescript": "2.4.2",
+    "typings-checker": "1.1.2"
+  },
+  "tags": [],
+  "keywords": []
+}
