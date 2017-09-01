@@ -3,7 +3,7 @@ import { Newtype, iso, over, getMonoid, getRing, getOrd } from '../src'
 import { monoidSum, fold } from 'fp-ts/lib/Monoid'
 import { fieldNumber } from 'fp-ts/lib/Field'
 import { Lens } from 'monocle-ts/lib'
-import { numberOrd, lessThan } from 'fp-ts/lib/Ord'
+import { ordNumber, lessThan } from 'fp-ts/lib/Ord'
 
 type Label = Newtype<'Label', string>
 const label = iso<Label>()
@@ -21,20 +21,20 @@ type Person = {
 
 describe('iso', () => {
   it('should not change the runtime representation', () => {
-    assert.strictEqual(label.reverseGet('foo'), 'foo')
+    assert.strictEqual(label.wrap('foo'), 'foo')
   })
 
   it('should allow mappings', () => {
-    assert.strictEqual(label.modify(s => s + '!', label.reverseGet('foo')), 'foo!')
+    assert.strictEqual(label.modify(s => s + '!')(label.wrap('foo')), 'foo!')
   })
 
   it('should allow optic managment', () => {
     const person: Person = {
       name: 'Giulio',
-      age: age.reverseGet(43)
+      age: age.wrap(43)
     }
     const ageLens = Lens.fromProp<Person, 'age'>('age').compose(age.asLens())
-    assert.deepEqual(ageLens.set(44, person), {
+    assert.deepEqual(ageLens.set(44)(person), {
       name: 'Giulio',
       age: 44
     })
@@ -44,28 +44,28 @@ describe('iso', () => {
 describe('over', () => {
   it('should transform a newtype into another newtype', () => {
     const getter = over<Label, Real>(s => s.length)
-    assert.strictEqual(getter.get(label.reverseGet('foo')), 3)
+    assert.strictEqual(getter.get(label.wrap('foo')), 3)
   })
 })
 
 describe('getOrd', () => {
   it('should lift a Ord', () => {
-    const ordReal = getOrd<Real>(numberOrd)
-    assert.strictEqual(lessThan(ordReal, real.reverseGet(2), real.reverseGet(3)), true)
-    assert.strictEqual(lessThan(ordReal, real.reverseGet(3), real.reverseGet(3)), false)
+    const ordReal = getOrd<Real>(ordNumber)
+    assert.strictEqual(lessThan(ordReal)(real.wrap(2))(real.wrap(3)), true)
+    assert.strictEqual(lessThan(ordReal)(real.wrap(3))(real.wrap(3)), false)
   })
 })
 
 describe('getMonoid', () => {
   it('should lift a Monoid', () => {
     const monoidReal = getMonoid<Real>(monoidSum)
-    assert.strictEqual(fold(monoidReal, [real.reverseGet(2), real.reverseGet(3)]), 5)
+    assert.strictEqual(fold(monoidReal)([real.wrap(2), real.wrap(3)]), 5)
   })
 })
 
 describe('getRing', () => {
   it('should lift a Ring', () => {
     const ringReal = getRing<Real>(fieldNumber)
-    assert.strictEqual(ringReal.mul(real.reverseGet(2), real.reverseGet(3)), 6)
+    assert.strictEqual(ringReal.mul(real.wrap(2))(real.wrap(3)), 6)
   })
 })

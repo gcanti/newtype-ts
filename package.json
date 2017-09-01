@@ -25,8 +25,8 @@
   },
   "homepage": "https://github.com/gcanti/newtype-ts",
   "dependencies": {
-    "fp-ts": "^0.4.6",
-    "monocle-ts": "^0.3.2"
+    "fp-ts": "^0.5.1",
+    "monocle-ts": "^0.4.1"
   },
   "devDependencies": {
     "@types/mocha": "2.2.38",
@@ -36,7 +36,7 @@
     "ts-node": "3.3.0",
     "tslint": "4.4.2",
     "tslint-config-standard": "4.0.0",
-    "typescript": "2.4.2",
+    "typescript": "^2.5.2",
     "typings-checker": "1.1.2"
   },
   "tags": [],
