@@ -40,6 +40,6 @@
     "typescript": "2.6.0-rc",
     "typings-checker": "1.1.2"
   },
-  "tags": [],
-  "keywords": []
+  "tags": ["typescript", "newtype", "functional-programming"],
+  "keywords": ["typescript", "newtype", "functional-programming"]
 }
