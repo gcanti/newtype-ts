@@ -18,7 +18,9 @@ export type Carrier<N extends Newtype<any, any>> = N['_A']
 
 export type AnyNewtype = Newtype<any, any>
 
-export const iso = <S extends AnyNewtype>(): Iso<S, Carrier<S>> => new Iso<S, Carrier<S>>(unsafeCoerce, unsafeCoerce)
+const anyIso = new Iso<any, any>(unsafeCoerce, unsafeCoerce)
+
+export const iso = <S extends AnyNewtype>(): Iso<S, Carrier<S>> => anyIso
 
 /** Lifts a function operate over newtypes */
 export const over = <S extends AnyNewtype, T extends AnyNewtype>(f: (a: Carrier<S>) => Carrier<T>): Getter<S, T> =>
