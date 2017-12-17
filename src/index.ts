@@ -9,7 +9,7 @@ import { Field } from 'fp-ts/lib/Field'
 
 const unsafeCoerce = <A, B>(a: A): B => a as any
 
-export interface Newtype<URI extends string, A> {
+export interface Newtype<URI, A> {
   _URI: URI
   _A: A
 }
