@@ -33,8 +33,10 @@
     "monocle-ts": "^0.5.0"
   },
   "devDependencies": {
+    "@types/benchmark": "^1.0.31",
     "@types/mocha": "2.2.38",
     "@types/node": "8.0.19",
+    "benchmark": "^2.1.4",
     "mocha": "3.2.0",
     "prettier": "1.9.2",
     "ts-node": "3.3.0",
