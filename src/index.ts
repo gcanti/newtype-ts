@@ -7,7 +7,7 @@ import { Semiring } from 'fp-ts/lib/Semiring'
 import { Ring } from 'fp-ts/lib/Ring'
 import { Field } from 'fp-ts/lib/Field'
 
-const unsafeCoerce = <A, B>(a: A): B => a as any
+export const unsafeCoerce = <A, B>(a: A): B => a as any
 
 export interface Newtype<URI, A> {
   _URI: URI
