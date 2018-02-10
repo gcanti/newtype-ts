@@ -1,6 +1,6 @@
 {
   "name": "newtype-ts",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "description": "Implementation of newtypes in TypeScript",
   "files": ["lib"],
   "main": "lib/index.js",
@@ -9,7 +9,7 @@
     "lint": "tslint src/**/*.ts test/**/*.ts",
     "typings-checker":
       "typings-checker --allow-expect-error --project typings-checker/tsconfig.json typings-checker/index.ts",
-    "mocha": "mocha -r ts-node/register test/*.ts",
+    "mocha": "TS_NODE_CACHE=false mocha -r ts-node/register test/*.ts",
     "prettier":
       "prettier --no-semi --single-quote --print-width 120 --parser typescript --list-different \"{src,test}/**/*.ts\"",
     "fix-prettier":
@@ -29,8 +29,8 @@
   },
   "homepage": "https://github.com/gcanti/newtype-ts",
   "dependencies": {
-    "fp-ts": "^0.6.0",
-    "monocle-ts": "^0.5.0"
+    "fp-ts": "gcanti/fp-ts#next",
+    "monocle-ts": "gcanti/monocle-ts#next"
   },
   "devDependencies": {
     "@types/benchmark": "^1.0.31",
@@ -42,7 +42,7 @@
     "ts-node": "3.3.0",
     "tslint": "4.4.2",
     "tslint-config-standard": "4.0.0",
-    "typescript": "2.6.2",
+    "typescript": "2.7.1",
     "typings-checker": "1.1.2"
   },
   "tags": ["typescript", "newtype", "functional-programming"],

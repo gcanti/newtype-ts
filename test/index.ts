@@ -28,7 +28,7 @@ describe('iso', () => {
     assert.strictEqual(label.modify(s => s + '!')(label.wrap('foo')), 'foo!')
   })
 
-  it('should allow optic managment', () => {
+  it('should allow optic management', () => {
     const person: Person = {
       name: 'Giulio',
       age: age.wrap(43)
@@ -51,8 +51,8 @@ describe('over', () => {
 describe('getOrd', () => {
   it('should lift a Ord', () => {
     const ordReal = getOrd<Real>(ordNumber)
-    assert.strictEqual(lessThan(ordReal)(real.wrap(2))(real.wrap(3)), true)
-    assert.strictEqual(lessThan(ordReal)(real.wrap(3))(real.wrap(3)), false)
+    assert.strictEqual(lessThan(ordReal)(real.wrap(2), real.wrap(3)), true)
+    assert.strictEqual(lessThan(ordReal)(real.wrap(3), real.wrap(3)), false)
   })
 })
 
@@ -66,6 +66,6 @@ describe('getMonoid', () => {
 describe('getRing', () => {
   it('should lift a Ring', () => {
     const ringReal = getRing<Real>(fieldNumber)
-    assert.strictEqual(ringReal.mul(real.wrap(2))(real.wrap(3)), 6)
+    assert.strictEqual(ringReal.mul(real.wrap(2), real.wrap(3)), 6)
   })
 })
