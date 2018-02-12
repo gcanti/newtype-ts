@@ -29,8 +29,8 @@
   },
   "homepage": "https://github.com/gcanti/newtype-ts",
   "dependencies": {
-    "fp-ts": "gcanti/fp-ts#next",
-    "monocle-ts": "gcanti/monocle-ts#next"
+    "fp-ts": "^1.0.0",
+    "monocle-ts": "^1.0.0"
   },
   "devDependencies": {
     "@types/benchmark": "^1.0.31",
