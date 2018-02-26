@@ -31,7 +31,7 @@ const doubleEUR = eurIso.modify(double)
 
 Test `double(2)` vs `doubleEUR(eurIso.wrap(2))`
 
-Results
+Results (`node v8.9.3`)
 
 ```
 double x 538,301,203 ops/sec ±0.45% (87 runs sampled)
