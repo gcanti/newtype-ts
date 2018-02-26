@@ -4,19 +4,15 @@ const { iso } = require('../lib')
 const suite = new Benchmark.Suite()
 
 const double = n => n * 2
-
-const ageIso = iso()
-
-const age = ageIso.wrap(43)
-
-const modify = ageIso.modify(double)
+const eurIso = iso()
+const doubleEUR = eurIso.modify(double)
 
 suite
   .add('double', function() {
     double(2)
   })
-  .add('modify', function() {
-    modify(age)
+  .add('doubleEUR', function() {
+    doubleEUR(eurIso.wrap(2))
   })
   .on('cycle', function(event) {
     console.log(String(event.target))
