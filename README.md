@@ -22,7 +22,11 @@ f(eur) // ok
 
 For the `Iso` type, see [monocle-ts](https://github.com/gcanti/monocle-ts) documentation.
 
-## Performance
+# TypeScript compatibility
+
+The stable version is tested against TypeScript 2.9.x
+
+# Performance
 
 ```ts
 const double = n => n * 2
@@ -38,7 +42,9 @@ double x 538,301,203 ops/sec ±0.45% (87 runs sampled)
 doubleEUR x 536,575,600 ops/sec ±0.27% (87 runs sampled)
 ```
 
-## Lift a function
+# Recipes
+
+## How to lift a function
 
 ```ts
 const double = (n: number): number => n * 2
@@ -47,7 +53,7 @@ const double = (n: number): number => n * 2
 const doubleEUR = eurIso.modify(double)
 ```
 
-## Operate over newtypes
+## How to operate over newtypes
 
 ```ts
 import { over } from 'newtype-ts'
