@@ -10,10 +10,10 @@
   "scripts": {
     "lint": "tslint src/**/*.ts test/**/*.ts",
     "typings-checker": "typings-checker --allow-expect-error --project typings-checker/tsconfig.json typings-checker/index.ts",
-    "mocha": "TS_NODE_CACHE=false mocha -r ts-node/register test/*.ts",
+    "jest": "jest",
     "prettier": "prettier --no-semi --single-quote --print-width 120 --parser typescript --list-different \"{src,test}/**/*.ts\"",
     "fix-prettier": "prettier --no-semi --single-quote --print-width 120 --parser typescript --write \"{src,test}/**/*.ts\"",
-    "test": "npm run prettier && npm run lint && npm run typings-checker && npm run mocha",
+    "test": "npm run prettier && npm run lint && npm run typings-checker && npm run jest",
     "clean": "rm -rf lib/*",
     "build": "npm run clean && tsc"
   },
@@ -32,17 +32,17 @@
     "monocle-ts": "^1.0.0"
   },
   "devDependencies": {
-    "@types/benchmark": "^1.0.31",
-    "@types/mocha": "2.2.38",
+    "@types/jest": "^22.2.2",
     "@types/node": "8.0.19",
     "benchmark": "^2.1.4",
-    "mocha": "3.2.0",
-    "prettier": "^1.11.0",
+    "jest": "^22.4.3",
+    "prettier": "^1.13.5",
+    "ts-jest": "^22.4.2",
     "ts-node": "3.3.0",
     "tslint": "4.4.2",
     "tslint-config-standard": "4.0.0",
-    "typescript": "2.7.1",
-    "typings-checker": "1.1.2"
+    "typescript": "^2.9.2",
+    "typings-checker": "^2.0.0"
   },
   "tags": [
     "typescript",
@@ -53,5 +53,29 @@
     "typescript",
     "newtype",
     "functional-programming"
-  ]
+  ],
+  "jest": {
+    "globals": {
+      "ts-jest": {
+        "skipBabel": true
+      }
+    },
+    "collectCoverage": true,
+    "transform": {
+      "^.+\\.tsx?$": "ts-jest"
+    },
+    "testRegex": "test",
+    "moduleFileExtensions": [
+      "ts",
+      "js"
+    ],
+    "coverageThreshold": {
+      "global": {
+        "branches": 100,
+        "functions": 100,
+        "lines": 100,
+        "statements": 0
+      }
+    }
+  }
 }

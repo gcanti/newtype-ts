@@ -1,9 +1,11 @@
 import * as assert from 'assert'
-import { Newtype, iso, over, getMonoid, getRing, getOrd } from '../src'
+import { Newtype, iso, over, getMonoid, getRing, getOrd, getSemigroup, getSetoid, getSemiring, getField } from '../src'
 import { monoidSum, fold } from 'fp-ts/lib/Monoid'
+import { fold as foldSemigroup } from 'fp-ts/lib/Semigroup'
 import { fieldNumber } from 'fp-ts/lib/Field'
 import { Lens } from 'monocle-ts/lib'
 import { ordNumber, lessThan } from 'fp-ts/lib/Ord'
+import { setoidNumber } from 'fp-ts/lib/Setoid'
 
 type Label = Newtype<'Label', string>
 const label = iso<Label>()
@@ -48,24 +50,42 @@ describe('over', () => {
   })
 })
 
-describe('getOrd', () => {
-  it('should lift a Ord', () => {
+describe('Algebras', () => {
+  it('getSetoid', () => {
+    const setoidReal = getSetoid<Real>(setoidNumber)
+    assert.strictEqual(setoidReal.equals(real.wrap(2), real.wrap(2)), true)
+    assert.strictEqual(setoidReal.equals(real.wrap(2), real.wrap(3)), false)
+    assert.strictEqual(setoidReal.equals(real.wrap(3), real.wrap(2)), false)
+  })
+
+  it('getOrd', () => {
     const ordReal = getOrd<Real>(ordNumber)
     assert.strictEqual(lessThan(ordReal)(real.wrap(2), real.wrap(3)), true)
     assert.strictEqual(lessThan(ordReal)(real.wrap(3), real.wrap(3)), false)
   })
-})
 
-describe('getMonoid', () => {
-  it('should lift a Monoid', () => {
+  it('getSemigroup', () => {
+    const semigroupReal = getSemigroup<Real>(monoidSum)
+    assert.strictEqual(foldSemigroup(semigroupReal)(real.wrap(0))([real.wrap(2), real.wrap(3)]), 5)
+  })
+
+  it('getMonoid', () => {
     const monoidReal = getMonoid<Real>(monoidSum)
     assert.strictEqual(fold(monoidReal)([real.wrap(2), real.wrap(3)]), 5)
   })
-})
 
-describe('getRing', () => {
-  it('should lift a Ring', () => {
+  it('getSemiring', () => {
+    const semiringReal = getSemiring<Real>(fieldNumber)
+    assert.strictEqual(semiringReal.mul(real.wrap(2), real.wrap(3)), 6)
+  })
+
+  it('getRing', () => {
     const ringReal = getRing<Real>(fieldNumber)
     assert.strictEqual(ringReal.mul(real.wrap(2), real.wrap(3)), 6)
+  })
+
+  it('getField', () => {
+    const fieldReal = getField<Real>(fieldNumber)
+    assert.strictEqual(fieldReal.mul(real.wrap(2), real.wrap(3)), 6)
   })
 })
