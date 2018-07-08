@@ -12,6 +12,8 @@ export interface Newtype<URI, A> {
   _A: A
 }
 
+export type URIOf<N extends Newtype<any, any>> = N['_URI']
+
 export type CarrierOf<N extends Newtype<any, any>> = N['_A']
 
 /**
