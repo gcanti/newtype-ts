@@ -1,11 +1,24 @@
 import * as assert from 'assert'
-import { Newtype, iso, over, getMonoid, getRing, getOrd, getSemigroup, getSetoid, getSemiring, getField } from '../src'
+import {
+  Newtype,
+  iso,
+  over,
+  getMonoid,
+  getRing,
+  getOrd,
+  getSemigroup,
+  getSetoid,
+  getSemiring,
+  getField,
+  prism
+} from '../src'
 import { monoidSum, fold } from 'fp-ts/lib/Monoid'
 import { fold as foldSemigroup } from 'fp-ts/lib/Semigroup'
 import { fieldNumber } from 'fp-ts/lib/Field'
 import { Lens } from 'monocle-ts/lib'
 import { ordNumber, lessThan } from 'fp-ts/lib/Ord'
 import { setoidNumber } from 'fp-ts/lib/Setoid'
+import { some, none } from 'fp-ts/lib/Option'
 
 type Label = Newtype<'Label', string>
 const label = iso<Label>()
@@ -87,5 +100,14 @@ describe('Algebras', () => {
   it('getField', () => {
     const fieldReal = getField<Real>(fieldNumber)
     assert.strictEqual(fieldReal.mul(real.wrap(2), real.wrap(3)), 6)
+  })
+})
+
+describe('prism', () => {
+  it('should return an Option', () => {
+    interface Integer extends Newtype<{ readonly Integer: unique symbol }, number> {}
+    const prismInteger = prism<Integer>(n => n % 1 === 0)
+    assert.deepEqual(prismInteger.getOption(1), some(1))
+    assert.deepEqual(prismInteger.getOption(0.5), none)
   })
 })

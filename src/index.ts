@@ -1,27 +1,29 @@
 import { Field } from 'fp-ts/lib/Field'
+import { identity, Predicate } from 'fp-ts/lib/function'
 import { Monoid } from 'fp-ts/lib/Monoid'
+import { none, some } from 'fp-ts/lib/Option'
 import { Ord } from 'fp-ts/lib/Ord'
 import { Ring } from 'fp-ts/lib/Ring'
 import { Semigroup } from 'fp-ts/lib/Semigroup'
 import { Semiring } from 'fp-ts/lib/Semiring'
 import { Setoid } from 'fp-ts/lib/Setoid'
-import { Getter, Iso } from 'monocle-ts'
+import { Getter, Iso, Prism } from 'monocle-ts'
 
 export interface Newtype<URI, A> {
   _URI: URI
   _A: A
 }
 
-export type URIOf<N extends Newtype<any, any>> = N['_URI']
+export type AnyNewtype = Newtype<any, any>
 
-export type CarrierOf<N extends Newtype<any, any>> = N['_A']
+export type URIOf<N extends AnyNewtype> = N['_URI']
+
+export type CarrierOf<N extends AnyNewtype> = N['_A']
 
 /**
  * @deprecated use `CarrierOf` instead
  */
 export type Carrier<N extends Newtype<any, any>> = N['_A']
-
-export type AnyNewtype = Newtype<any, any>
 
 /** Lifts a function operate over newtypes */
 export const over = <S extends AnyNewtype, T extends AnyNewtype>(f: (a: CarrierOf<S>) => CarrierOf<T>): Getter<S, T> =>
@@ -50,3 +52,16 @@ export const unsafeCoerce = <A, B>(a: A): B => a as any
 const anyIso = new Iso<any, any>(unsafeCoerce, unsafeCoerce)
 
 export const iso = <S extends AnyNewtype>(): Iso<S, CarrierOf<S>> => anyIso
+
+//
+// prisms
+//
+
+export interface Concat<N1 extends Newtype<object, any>, N2 extends Newtype<object, CarrierOf<N1>>>
+  extends Newtype<URIOf<N1> & URIOf<N2>, CarrierOf<N1>> {}
+
+export interface Extends<N extends AnyNewtype, Tags extends object> extends Newtype<Tags & URIOf<N>, CarrierOf<N>> {}
+
+export const prism = <S extends AnyNewtype>(predicate: Predicate<CarrierOf<S>>): Prism<CarrierOf<S>, S> => {
+  return new Prism(s => (predicate(s) ? some(s) : none), identity)
+}
