@@ -1,26 +1,81 @@
 # Usage
 
+## Newtypes
+
+Let's define a newtype for the EUR currency
+
 ```ts
 import { Newtype, iso } from 'newtype-ts'
 
-interface EUR extends Newtype<'EUR', number> {}
+interface EUR extends Newtype<{ readonly EUR: unique symbol }, number> {}
 
-// eurIso: Iso<EUR, number>
-const eurIso = iso<EUR>()
+// isoEUR: Iso<EUR, number>
+const isoEUR = iso<EUR>()
 
 // eur: EUR
-const eur = eurIso.wrap(2)
+const eur = isoEUR.wrap(2)
 
 // n: number
-export const n = eurIso.unwrap(eur)
+const n = isoEUR.unwrap(eur)
 
 declare function f(eur: EUR): void
 
-f(2) // Argument of type '2' is not assignable to parameter of type 'EUR'
+f(2) // static error: Argument of type '2' is not assignable to parameter of type 'EUR'
 f(eur) // ok
 ```
 
-For the `Iso` type, see [monocle-ts](https://github.com/gcanti/monocle-ts) documentation.
+For the `Iso` type, see the [monocle-ts](https://github.com/gcanti/monocle-ts) documentation.
+
+## Refinements
+
+An `Integer` is a refinement of `number`
+
+```ts
+import { Newtype, prism } from 'newtype-ts'
+
+interface Integer extends Newtype<{ readonly Integer: unique symbol }, number> {}
+
+const isInteger = (n: number) => n % 1 === 0
+
+// prismInteger: Prism<number, Integer>
+const prismInteger = prism<Integer>(isInteger)
+
+// oi: Option<Integer>
+const oi = prismInteger.getOption(2)
+
+declare function f(i: Integer): void
+
+f(2) // static error: Argument of type '2' is not assignable to parameter of type 'Integer'
+oi.map(f) // ok
+```
+
+For the `Prism` type, see the [monocle-ts](https://github.com/gcanti/monocle-ts) documentation.
+
+## Builtin newtypes
+
+- `Integer`
+- `Negative`
+- `NegativeInteger`
+- `NonNegative`
+- `NonNegativeInteger`
+- `NonPositive`
+- `NonPositiveInteger`
+- `NonZero`
+- `NonZeroInteger`
+- `Positive`
+- `PositiveInteger`
+
+```ts
+import { NonZero, prismNonZero } from 'newtype-ts/lib/NonZero'
+
+// a total function
+const safeDivide = (numerator: number, denominator: NonZero): number => {
+  return numerator / prismNonZero.reverseGet(denominator)
+}
+
+// result: Option<number>
+const result = prismNonZero.getOption(2).map(denominator => safeDivide(2, denominator))
+```
 
 # TypeScript compatibility
 

@@ -9,9 +9,33 @@
 > - [Internal]
 > - [Polish]
 > - [Experimental]
+> - [Deprecation]
 
 **Note**: Gaps between patch versions are faulty/broken releases. **Note**: A feature tagged as Experimental is in a
 high state of flux, you're at risk of it changing without notice.
+
+# 0.2.1
+
+- **New Feature**
+  - add `URIOf` type (@gcanti)
+  - add prism management (@gcanti)
+    - `Concat` type
+    - `Extends` type
+    - `prism` function
+  - add basic newtypes for number (@gcanti)
+    - `Integer`
+    - `Negative`
+    - `NegativeInteger`
+    - `NonNegative`
+    - `NonNegativeInteger`
+    - `NonPositive`
+    - `NonPositiveInteger`
+    - `NonZero`
+    - `NonZeroInteger`
+    - `Positive`
+    - `PositiveInteger`
+- **Deprecation**
+  - deprecate `Carrier` in favour of `CarrierOf` (@gcanti)
 
 # 0.2.0
 
