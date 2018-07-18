@@ -51,7 +51,7 @@ oi.map(f) // ok
 
 For the `Prism` type, see the [monocle-ts](https://github.com/gcanti/monocle-ts) documentation.
 
-## Builtin newtypes
+## Builtin refinements
 
 - `Integer`
 - `Negative`
