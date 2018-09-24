@@ -2,6 +2,23 @@
 [![dependency status](https://img.shields.io/david/gcanti/newtype-ts.svg?style=flat-square)](https://david-dm.org/gcanti/newtype-ts)
 ![npm downloads](https://img.shields.io/npm/dm/newtype-ts.svg)
 
+# Motivation
+
+A common programming practice is to define a type whose representation is identical to an existing one but which has a separate identity in the type system.
+
+```ts
+type USD = number
+type EUR = number
+
+const myamount: USD = 1
+
+declare function change(usd: USD): EUR
+declare function saveAmount(eur: EUR): void
+
+saveAmount(change(myamount)) // ok
+saveAmount(myamount) // opss... this is also ok because both EUR and USD are type alias of number!
+```
+
 # Usage
 
 ## Newtypes
@@ -16,16 +33,16 @@ interface EUR extends Newtype<{ readonly EUR: unique symbol }, number> {}
 // isoEUR: Iso<EUR, number>
 const isoEUR = iso<EUR>()
 
-// eur: EUR
-const eur = isoEUR.wrap(2)
+// myamount: EUR
+const myamount = isoEUR.wrap(0.85)
 
-// n: number
-const n = isoEUR.unwrap(eur)
+// n: number = 0.85
+const n = isoEUR.unwrap(myamount)
 
-declare function f(eur: EUR): void
+declare function saveAmount(eur: EUR): void
 
-f(2) // static error: Argument of type '2' is not assignable to parameter of type 'EUR'
-f(eur) // ok
+saveAmount(0.85) // static error: Argument of type '0.85' is not assignable to parameter of type 'EUR'
+saveAmount(myamount) // ok
 ```
 
 For the `Iso` type, see the [monocle-ts](https://github.com/gcanti/monocle-ts) documentation.
@@ -117,7 +134,7 @@ const doubleEUR = eurIso.modify(double)
 ```ts
 import { over } from 'newtype-ts'
 
-interface USD extends Newtype<'USD', number> {}
+interface USD extends Newtype<{ readonly USD: unique symbol }, number> {}
 
 const USDFromEUR = (n: number): number => n * 1.18
 
