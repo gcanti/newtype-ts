@@ -45,6 +45,8 @@ saveAmount(0.85) // static error: Argument of type '0.85' is not assignable to p
 saveAmount(myamount) // ok
 ```
 
+By definition a "newtype" must have the **exact same runtime representation** as the value that it stores, e.g. a value of type `EUR` is just a `number` at runtime.
+
 For the `Iso` type, see the [monocle-ts](https://github.com/gcanti/monocle-ts) documentation.
 
 ## Refinements
