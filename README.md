@@ -76,6 +76,7 @@ For the `Prism` type, see the [monocle-ts](https://github.com/gcanti/monocle-ts)
 
 ## Builtin refinements
 
+- `Char`
 - `Integer`
 - `Negative`
 - `NegativeInteger`
@@ -83,6 +84,7 @@ For the `Prism` type, see the [monocle-ts](https://github.com/gcanti/monocle-ts)
 - `NonNegativeInteger`
 - `NonPositive`
 - `NonPositiveInteger`
+- `NonEmptyString`
 - `NonZero`
 - `NonZeroInteger`
 - `Positive`
