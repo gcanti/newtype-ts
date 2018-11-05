@@ -104,7 +104,7 @@ const result = prismNonZero.getOption(2).map(denominator => safeDivide(2, denomi
 
 # TypeScript compatibility
 
-The stable version is tested against TypeScript 2.9.x
+The stable version is tested against TypeScript 3.1.6
 
 # Performance
 
