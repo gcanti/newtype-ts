@@ -10,8 +10,8 @@ import { Setoid } from 'fp-ts/lib/Setoid'
 import { Getter, Iso, Prism } from 'monocle-ts'
 
 export interface Newtype<URI, A> {
-  _URI: URI
-  _A: A
+  readonly _URI: URI
+  readonly _A: A
 }
 
 export type AnyNewtype = Newtype<any, any>
