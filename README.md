@@ -58,7 +58,7 @@ import { Newtype, prism } from 'newtype-ts'
 
 interface Integer extends Newtype<{ readonly Integer: unique symbol }, number> {}
 
-const isInteger = (n: number) => n % 1 === 0
+const isInteger = (n: number) => Number.isInteger(n);
 
 // prismInteger: Prism<number, Integer>
 const prismInteger = prism<Integer>(isInteger)
