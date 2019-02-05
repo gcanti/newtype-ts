@@ -1,6 +1,6 @@
 {
   "name": "newtype-ts",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "description": "Implementation of newtypes in TypeScript",
   "files": [
     "lib"
