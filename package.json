@@ -13,9 +13,10 @@
     "jest": "jest",
     "prettier": "prettier --no-semi --single-quote --print-width 120 --parser typescript --list-different \"{src,test}/**/*.ts\"",
     "fix-prettier": "prettier --no-semi --single-quote --print-width 120 --parser typescript --write \"{src,test}/**/*.ts\"",
-    "test": "npm run prettier && npm run lint && npm run typings-checker && npm run jest",
+    "test": "npm run prettier && npm run lint && npm run typings-checker && npm run jest && npm run docs",
     "clean": "rm -rf lib/*",
-    "build": "npm run clean && tsc"
+    "build": "npm run clean && tsc",
+    "docs": "docs-ts"
   },
   "repository": {
     "type": "git",
@@ -35,6 +36,7 @@
     "@types/jest": "^22.2.2",
     "@types/node": "8.0.19",
     "benchmark": "^2.1.4",
+    "docs-ts": "0.0.1",
     "jest": "^22.4.3",
     "prettier": "^1.13.5",
     "ts-jest": "^22.4.2",

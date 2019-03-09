@@ -1,6 +1,7 @@
-[![build status](https://img.shields.io/travis/gcanti/newtype-ts/master.svg?style=flat-square)](https://travis-ci.org/gcanti/newtype-ts)
-[![dependency status](https://img.shields.io/david/gcanti/newtype-ts.svg?style=flat-square)](https://david-dm.org/gcanti/newtype-ts)
-![npm downloads](https://img.shields.io/npm/dm/newtype-ts.svg)
+---
+title: Home
+nav_order: 1
+---
 
 # Motivation
 
@@ -150,7 +151,3 @@ const usd = getter.get(eur)
 ```
 
 For the `Getter` type, see [monocle-ts](https://github.com/gcanti/monocle-ts) documentation.
-
-# Documentation
-
-- [API Reference](https://gcanti.github.io/newtype-ts)
