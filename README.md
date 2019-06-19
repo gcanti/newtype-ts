@@ -104,7 +104,12 @@ const result = prismNonZero.getOption(2).map(denominator => safeDivide(2, denomi
 
 # TypeScript compatibility
 
-The stable version is tested against TypeScript 3.1.6
+The stable version is tested against TypeScript 3.5.1
+
+| `newtype-ts` version | required `typescript` version | required `fp-ts` version | required `monocle-ts` version |
+| -------------------- | ----------------------------- | ------------------------ | ----------------------------- |
+| 0.3                  | 3.5.1+                        | 2.0.0-rc.6+              | 2.0.0-rc.1+                   |
+| <= 0.2.4             | 2.8+                          | 1.0.0+                   | 1.0.0+                        |
 
 # Performance
 
@@ -132,24 +137,6 @@ const double = (n: number): number => n * 2
 // doubleEUR: (s: EUR) => EUR
 const doubleEUR = eurIso.modify(double)
 ```
-
-## How to operate over newtypes
-
-```ts
-import { over } from 'newtype-ts'
-
-interface USD extends Newtype<{ readonly USD: unique symbol }, number> {}
-
-const USDFromEUR = (n: number): number => n * 1.18
-
-// getter: Getter<EUR, USD>
-const getter = over<EUR, USD>(USDFromEUR)
-
-// usd: USD
-const usd = getter.get(eur)
-```
-
-For the `Getter` type, see [monocle-ts](https://github.com/gcanti/monocle-ts) documentation.
 
 # Documentation
 

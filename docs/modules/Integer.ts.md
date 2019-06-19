@@ -22,6 +22,8 @@ parent: Modules
 export interface Integer extends Newtype<{ readonly Integer: unique symbol }, number> {}
 ```
 
+Added in v0.2.0
+
 # prismInteger (constant)
 
 **Signature**
@@ -30,6 +32,8 @@ export interface Integer extends Newtype<{ readonly Integer: unique symbol }, nu
 export const prismInteger: Prism<number, Integer> = ...
 ```
 
+Added in v0.2.0
+
 # isInteger (function)
 
 **Signature**
@@ -37,3 +41,5 @@ export const prismInteger: Prism<number, Integer> = ...
 ```ts
 export const isInteger = (n: number) => ...
 ```
+
+Added in v0.2.0

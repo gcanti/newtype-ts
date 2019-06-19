@@ -1,23 +1,11 @@
 import * as assert from 'assert'
-import {
-  Newtype,
-  iso,
-  over,
-  getMonoid,
-  getRing,
-  getOrd,
-  getSemigroup,
-  getSetoid,
-  getSemiring,
-  getField,
-  prism
-} from '../src'
+import { Newtype, iso, getMonoid, getRing, getOrd, getSemigroup, getEq, getSemiring, getField, prism } from '../src'
 import { monoidSum, fold } from 'fp-ts/lib/Monoid'
-import { fold as foldSemigroup } from 'fp-ts/lib/Semigroup'
+import * as S from 'fp-ts/lib/Semigroup'
 import { fieldNumber } from 'fp-ts/lib/Field'
 import { Lens } from 'monocle-ts/lib'
-import { ordNumber, lessThan } from 'fp-ts/lib/Ord'
-import { setoidNumber } from 'fp-ts/lib/Setoid'
+import { ordNumber, lt } from 'fp-ts/lib/Ord'
+import { eqNumber } from 'fp-ts/lib/Eq'
 import { some, none } from 'fp-ts/lib/Option'
 
 type Label = Newtype<'Label', string>
@@ -48,7 +36,7 @@ describe('iso', () => {
       name: 'Giulio',
       age: age.wrap(43)
     }
-    const ageLens = Lens.fromProp<Person, 'age'>('age').compose(age.asLens())
+    const ageLens = Lens.fromProp<Person>()('age').compose(age.asLens())
     assert.deepEqual(ageLens.set(44)(person), {
       name: 'Giulio',
       age: 44
@@ -56,30 +44,23 @@ describe('iso', () => {
   })
 })
 
-describe('over', () => {
-  it('should transform a newtype into another newtype', () => {
-    const getter = over<Label, Real>(s => s.length)
-    assert.strictEqual(getter.get(label.wrap('foo')), 3)
-  })
-})
-
 describe('Algebras', () => {
   it('getSetoid', () => {
-    const setoidReal = getSetoid<Real>(setoidNumber)
-    assert.strictEqual(setoidReal.equals(real.wrap(2), real.wrap(2)), true)
-    assert.strictEqual(setoidReal.equals(real.wrap(2), real.wrap(3)), false)
-    assert.strictEqual(setoidReal.equals(real.wrap(3), real.wrap(2)), false)
+    const eqReal = getEq<Real>(eqNumber)
+    assert.strictEqual(eqReal.equals(real.wrap(2), real.wrap(2)), true)
+    assert.strictEqual(eqReal.equals(real.wrap(2), real.wrap(3)), false)
+    assert.strictEqual(eqReal.equals(real.wrap(3), real.wrap(2)), false)
   })
 
   it('getOrd', () => {
     const ordReal = getOrd<Real>(ordNumber)
-    assert.strictEqual(lessThan(ordReal)(real.wrap(2), real.wrap(3)), true)
-    assert.strictEqual(lessThan(ordReal)(real.wrap(3), real.wrap(3)), false)
+    assert.strictEqual(lt(ordReal)(real.wrap(2), real.wrap(3)), true)
+    assert.strictEqual(lt(ordReal)(real.wrap(3), real.wrap(3)), false)
   })
 
   it('getSemigroup', () => {
     const semigroupReal = getSemigroup<Real>(monoidSum)
-    assert.strictEqual(foldSemigroup(semigroupReal)(real.wrap(0))([real.wrap(2), real.wrap(3)]), 5)
+    assert.strictEqual(S.fold(semigroupReal)(real.wrap(0), [real.wrap(2), real.wrap(3)]), 5)
   })
 
   it('getMonoid', () => {

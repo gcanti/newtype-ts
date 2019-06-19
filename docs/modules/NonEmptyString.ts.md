@@ -22,6 +22,8 @@ parent: Modules
 export interface NonEmptyString extends Newtype<{ readonly NonEmptyString: unique symbol }, string> {}
 ```
 
+Added in v0.2.0
+
 # prismNonEmptyString (constant)
 
 **Signature**
@@ -30,6 +32,8 @@ export interface NonEmptyString extends Newtype<{ readonly NonEmptyString: uniqu
 export const prismNonEmptyString: Prism<string, NonEmptyString> = ...
 ```
 
+Added in v0.2.0
+
 # isNonEmptyString (function)
 
 **Signature**
@@ -37,3 +41,5 @@ export const prismNonEmptyString: Prism<string, NonEmptyString> = ...
 ```ts
 export const isNonEmptyString = (s: string) => ...
 ```
+
+Added in v0.2.0

@@ -22,6 +22,8 @@ parent: Modules
 export interface Char extends Newtype<URIOf<NonEmptyString> & { readonly Length: 1 }, string> {}
 ```
 
+Added in v0.2.0
+
 # prismChar (constant)
 
 **Signature**
@@ -30,6 +32,8 @@ export interface Char extends Newtype<URIOf<NonEmptyString> & { readonly Length:
 export const prismChar: Prism<string, Char> = ...
 ```
 
+Added in v0.2.0
+
 # isChar (function)
 
 **Signature**
@@ -37,3 +41,5 @@ export const prismChar: Prism<string, Char> = ...
 ```ts
 export const isChar = (s: string) => ...
 ```
+
+Added in v0.2.0

@@ -14,6 +14,15 @@
 **Note**: Gaps between patch versions are faulty/broken releases. **Note**: A feature tagged as Experimental is in a
 high state of flux, you're at risk of it changing without notice.
 
+# 0.3.0
+
+- **Breaking Change**
+  - upgrade to `fp-ts@2.x` and `monocle-ts@2.x` (@gcanti)
+  - remove deprecated APIs (@gcanti)
+    - `Carrier` type
+  - remove `over` function (@gcanti)
+  - remove `unsafeCoerce` function (@gcanti)
+
 # 0.2.4
 
 - **Polish**

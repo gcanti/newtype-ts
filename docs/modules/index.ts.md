@@ -12,20 +12,17 @@ parent: Modules
 - [Extends (interface)](#extends-interface)
 - [Newtype (interface)](#newtype-interface)
 - [AnyNewtype (type alias)](#anynewtype-type-alias)
-- [~~Carrier~~ (type alias)](#carrier-type-alias)
 - [CarrierOf (type alias)](#carrierof-type-alias)
 - [URIOf (type alias)](#uriof-type-alias)
+- [getEq (function)](#geteq-function)
 - [getField (function)](#getfield-function)
 - [getMonoid (function)](#getmonoid-function)
 - [getOrd (function)](#getord-function)
 - [getRing (function)](#getring-function)
 - [getSemigroup (function)](#getsemigroup-function)
 - [getSemiring (function)](#getsemiring-function)
-- [getSetoid (function)](#getsetoid-function)
 - [iso (function)](#iso-function)
-- [over (function)](#over-function)
 - [prism (function)](#prism-function)
-- [unsafeCoerce (function)](#unsafecoerce-function)
 
 ---
 
@@ -38,6 +35,8 @@ export interface Concat<N1 extends Newtype<object, any>, N2 extends Newtype<obje
   extends Newtype<URIOf<N1> & URIOf<N2>, CarrierOf<N1>> {}
 ```
 
+Added in v0.2.0
+
 # Extends (interface)
 
 **Signature**
@@ -45,6 +44,8 @@ export interface Concat<N1 extends Newtype<object, any>, N2 extends Newtype<obje
 ```ts
 export interface Extends<N extends AnyNewtype, Tags extends object> extends Newtype<Tags & URIOf<N>, CarrierOf<N>> {}
 ```
+
+Added in v0.2.0
 
 # Newtype (interface)
 
@@ -57,6 +58,8 @@ export interface Newtype<URI, A> {
 }
 ```
 
+Added in v0.2.0
+
 # AnyNewtype (type alias)
 
 **Signature**
@@ -65,13 +68,7 @@ export interface Newtype<URI, A> {
 export type AnyNewtype = Newtype<any, any>
 ```
 
-# ~~Carrier~~ (type alias)
-
-**Signature**
-
-```ts
-export type Carrier<N extends Newtype<any, any>> = N['_A']
-```
+Added in v0.2.0
 
 # CarrierOf (type alias)
 
@@ -81,6 +78,8 @@ export type Carrier<N extends Newtype<any, any>> = N['_A']
 export type CarrierOf<N extends AnyNewtype> = N['_A']
 ```
 
+Added in v0.2.0
+
 # URIOf (type alias)
 
 **Signature**
@@ -88,6 +87,18 @@ export type CarrierOf<N extends AnyNewtype> = N['_A']
 ```ts
 export type URIOf<N extends AnyNewtype> = N['_URI']
 ```
+
+Added in v0.2.0
+
+# getEq (function)
+
+**Signature**
+
+```ts
+export const getEq = <S extends AnyNewtype>(S: Eq<CarrierOf<S>>): Eq<S> => ...
+```
+
+Added in v0.3.0
 
 # getField (function)
 
@@ -97,6 +108,8 @@ export type URIOf<N extends AnyNewtype> = N['_URI']
 export const getField = <S extends AnyNewtype>(F: Field<CarrierOf<S>>): Field<S> => ...
 ```
 
+Added in v0.2.0
+
 # getMonoid (function)
 
 **Signature**
@@ -104,6 +117,8 @@ export const getField = <S extends AnyNewtype>(F: Field<CarrierOf<S>>): Field<S>
 ```ts
 export const getMonoid = <S extends AnyNewtype>(M: Monoid<CarrierOf<S>>): Monoid<S> => ...
 ```
+
+Added in v0.2.0
 
 # getOrd (function)
 
@@ -113,6 +128,8 @@ export const getMonoid = <S extends AnyNewtype>(M: Monoid<CarrierOf<S>>): Monoid
 export const getOrd = <S extends AnyNewtype>(O: Ord<CarrierOf<S>>): Ord<S> => ...
 ```
 
+Added in v0.2.0
+
 # getRing (function)
 
 **Signature**
@@ -120,6 +137,8 @@ export const getOrd = <S extends AnyNewtype>(O: Ord<CarrierOf<S>>): Ord<S> => ..
 ```ts
 export const getRing = <S extends AnyNewtype>(R: Ring<CarrierOf<S>>): Ring<S> => ...
 ```
+
+Added in v0.2.0
 
 # getSemigroup (function)
 
@@ -129,6 +148,8 @@ export const getRing = <S extends AnyNewtype>(R: Ring<CarrierOf<S>>): Ring<S> =>
 export const getSemigroup = <S extends AnyNewtype>(S: Semigroup<CarrierOf<S>>): Semigroup<S> => ...
 ```
 
+Added in v0.2.0
+
 # getSemiring (function)
 
 **Signature**
@@ -137,44 +158,24 @@ export const getSemigroup = <S extends AnyNewtype>(S: Semigroup<CarrierOf<S>>): 
 export const getSemiring = <S extends AnyNewtype>(S: Semiring<CarrierOf<S>>): Semiring<S> => ...
 ```
 
-# getSetoid (function)
-
-**Signature**
-
-```ts
-export const getSetoid = <S extends AnyNewtype>(S: Setoid<CarrierOf<S>>): Setoid<S> => ...
-```
+Added in v0.2.0
 
 # iso (function)
 
 **Signature**
 
 ```ts
-export const iso = <S extends AnyNewtype>(): Iso<S, CarrierOf<S>> => ...
+export function iso<S extends AnyNewtype>(): Iso<S, CarrierOf<S>> { ... }
 ```
 
-# over (function)
-
-Lifts a function operate over newtypes
-
-**Signature**
-
-```ts
-export const over = <S extends AnyNewtype, T extends AnyNewtype>(f: (a: CarrierOf<S>) => CarrierOf<T>): Getter<S, T> => ...
-```
+Added in v0.2.0
 
 # prism (function)
 
 **Signature**
 
 ```ts
-export const prism = <S extends AnyNewtype>(predicate: Predicate<CarrierOf<S>>): Prism<CarrierOf<S>, S> => ...
+export function prism<S extends AnyNewtype>(predicate: Predicate<CarrierOf<S>>): Prism<CarrierOf<S>, S> { ... }
 ```
 
-# unsafeCoerce (function)
-
-**Signature**
-
-```ts
-export const unsafeCoerce = <A, B>(a: A): B => ...
-```
+Added in v0.2.0
