@@ -1,9 +1,10 @@
 {
   "name": "newtype-ts",
-  "version": "0.2.4",
+  "version": "0.3.0",
   "description": "Implementation of newtypes in TypeScript",
   "files": [
-    "lib"
+    "lib",
+    "es6"
   ],
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
@@ -15,7 +16,8 @@
     "fix-prettier": "prettier --no-semi --single-quote --print-width 120 --parser typescript --write \"{src,test}/**/*.ts\"",
     "test": "npm run prettier && npm run lint && npm run typings-checker && npm run jest && npm run docs",
     "clean": "rm -rf lib/*",
-    "build": "npm run clean && tsc",
+    "build": "npm run clean && tsc && tsc -p tsconfig.es6.json",
+    "prepublish": "npm run build",
     "docs": "docs-ts"
   },
   "repository": {
@@ -28,22 +30,23 @@
     "url": "https://github.com/gcanti/newtype-ts/issues"
   },
   "homepage": "https://github.com/gcanti/newtype-ts",
-  "dependencies": {
-    "fp-ts": "^1.0.0",
-    "monocle-ts": "^1.0.0"
+  "peerDependencies": {
+    "fp-ts": "^2.0.0-rc.6",
+    "monocle-ts": "^2.0.0-rc.1"
   },
   "devDependencies": {
     "@types/jest": "^22.2.2",
     "@types/node": "^10.12.21",
-    "benchmark": "^2.1.4",
     "docs-ts": "0.0.1",
+    "fp-ts": "^2.0.0-rc.6",
     "jest": "^22.4.3",
+    "monocle-ts": "^2.0.0-rc.1",
     "prettier": "^1.13.5",
     "ts-jest": "^22.4.2",
     "ts-node": "3.3.0",
     "tslint": "4.4.2",
     "tslint-config-standard": "4.0.0",
-    "typescript": "^3.1.6",
+    "typescript": "^3.5.1",
     "typings-checker": "^2.0.0"
   },
   "tags": [

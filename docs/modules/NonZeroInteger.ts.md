@@ -22,6 +22,8 @@ parent: Modules
 export interface NonZeroInteger extends Concat<NonZero, Integer> {}
 ```
 
+Added in v0.2.0
+
 # prismNonZeroInteger (constant)
 
 **Signature**
@@ -30,6 +32,8 @@ export interface NonZeroInteger extends Concat<NonZero, Integer> {}
 export const prismNonZeroInteger: Prism<number, NonZeroInteger> = ...
 ```
 
+Added in v0.2.0
+
 # isNonZeroInteger (function)
 
 **Signature**
@@ -37,3 +41,5 @@ export const prismNonZeroInteger: Prism<number, NonZeroInteger> = ...
 ```ts
 export const isNonZeroInteger = (n: number) => ...
 ```
+
+Added in v0.2.0

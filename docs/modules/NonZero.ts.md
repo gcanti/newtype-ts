@@ -22,6 +22,8 @@ parent: Modules
 export interface NonZero extends Newtype<{ readonly NonZero: unique symbol }, number> {}
 ```
 
+Added in v0.2.0
+
 # prismNonZero (constant)
 
 **Signature**
@@ -30,6 +32,8 @@ export interface NonZero extends Newtype<{ readonly NonZero: unique symbol }, nu
 export const prismNonZero: Prism<number, NonZero> = ...
 ```
 
+Added in v0.2.0
+
 # isNonZero (function)
 
 **Signature**
@@ -37,3 +41,5 @@ export const prismNonZero: Prism<number, NonZero> = ...
 ```ts
 export const isNonZero = (n: number) => ...
 ```
+
+Added in v0.2.0

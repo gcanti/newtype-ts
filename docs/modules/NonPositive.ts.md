@@ -22,6 +22,8 @@ parent: Modules
 export interface NonPositive extends Newtype<{ readonly NonPositive: unique symbol }, number> {}
 ```
 
+Added in v0.2.0
+
 # prismNonPositive (constant)
 
 **Signature**
@@ -30,6 +32,8 @@ export interface NonPositive extends Newtype<{ readonly NonPositive: unique symb
 export const prismNonPositive: Prism<number, NonPositive> = ...
 ```
 
+Added in v0.2.0
+
 # isNonPositive (function)
 
 **Signature**
@@ -37,3 +41,5 @@ export const prismNonPositive: Prism<number, NonPositive> = ...
 ```ts
 export const isNonPositive = (n: number) => ...
 ```
+
+Added in v0.2.0

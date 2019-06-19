@@ -22,6 +22,8 @@ parent: Modules
 export interface Positive extends Concat<NonZero, NonNegative> {}
 ```
 
+Added in v0.2.0
+
 # prismPositive (constant)
 
 **Signature**
@@ -30,6 +32,8 @@ export interface Positive extends Concat<NonZero, NonNegative> {}
 export const prismPositive: Prism<number, Positive> = ...
 ```
 
+Added in v0.2.0
+
 # isPositive (function)
 
 **Signature**
@@ -37,3 +41,5 @@ export const prismPositive: Prism<number, Positive> = ...
 ```ts
 export const isPositive = (n: number) => ...
 ```
+
+Added in v0.2.0
