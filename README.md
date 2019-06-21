@@ -2,6 +2,16 @@
 [![dependency status](https://img.shields.io/david/gcanti/newtype-ts.svg?style=flat-square)](https://david-dm.org/gcanti/newtype-ts)
 ![npm downloads](https://img.shields.io/npm/dm/newtype-ts.svg)
 
+# Installation
+
+To install the stable version:
+
+```sh
+npm i newtype-ts
+```
+
+**Note**. `newtype-ts` depends on [`fp-ts`](https://github.com/gcanti/fp-ts) and [`monocle-ts`](https://github.com/gcanti/monocle-ts), starting from `0.3.0` you must install both `fp-ts` and `monocle-ts` manually (`fp-ts` and `monocle-ts` are listed in `peerDependency`)
+
 # Motivation
 
 A common programming practice is to define a type whose representation is identical to an existing one but which has a separate identity in the type system.

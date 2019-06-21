@@ -1,13 +1,15 @@
 {
   "name": "newtype-ts",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "Implementation of newtypes in TypeScript",
   "files": [
     "lib",
     "es6"
   ],
   "main": "lib/index.js",
+  "module": "es6/index.js",
   "typings": "lib/index.d.ts",
+  "sideEffects": false,
   "scripts": {
     "lint": "tslint src/**/*.ts test/**/*.ts",
     "typings-checker": "typings-checker --allow-expect-error --project typings-checker/tsconfig.json typings-checker/index.ts",
