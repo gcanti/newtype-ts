@@ -1,5 +1,4 @@
 [![build status](https://img.shields.io/travis/gcanti/newtype-ts/master.svg?style=flat-square)](https://travis-ci.org/gcanti/newtype-ts)
-[![dependency status](https://img.shields.io/david/gcanti/newtype-ts.svg?style=flat-square)](https://david-dm.org/gcanti/newtype-ts)
 ![npm downloads](https://img.shields.io/npm/dm/newtype-ts.svg)
 
 # Installation
