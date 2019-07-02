@@ -1,6 +1,6 @@
 {
   "name": "newtype-ts",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "description": "Implementation of newtypes in TypeScript",
   "files": [
     "lib",
@@ -33,16 +33,16 @@
   },
   "homepage": "https://github.com/gcanti/newtype-ts",
   "peerDependencies": {
-    "fp-ts": "^2.0.0-rc.6",
-    "monocle-ts": "^2.0.0-rc.1"
+    "fp-ts": "^2.0.0",
+    "monocle-ts": "^2.0.0"
   },
   "devDependencies": {
     "@types/jest": "^22.2.2",
     "@types/node": "^10.12.21",
     "docs-ts": "0.0.1",
-    "fp-ts": "^2.0.0-rc.7",
+    "fp-ts": "^2.0.0",
     "jest": "^22.4.3",
-    "monocle-ts": "^2.0.0-rc.1",
+    "monocle-ts": "^2.0.0",
     "prettier": "^1.13.5",
     "ts-jest": "^22.4.2",
     "ts-node": "3.3.0",
