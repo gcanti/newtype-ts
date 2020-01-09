@@ -1,6 +1,6 @@
 {
   "name": "newtype-ts",
-  "version": "0.3.2",
+  "version": "0.3.3",
   "description": "Implementation of newtypes in TypeScript",
   "files": [
     "lib",
@@ -11,16 +11,18 @@
   "typings": "lib/index.d.ts",
   "sideEffects": false,
   "scripts": {
-    "lint": "tslint src/**/*.ts test/**/*.ts",
+    "lint": "tslint -p .",
     "typings-checker": "typings-checker --allow-expect-error --project typings-checker/tsconfig.json typings-checker/index.ts",
     "jest": "jest",
     "prettier": "prettier --no-semi --single-quote --print-width 120 --parser typescript --list-different \"{src,test}/**/*.ts\"",
     "fix-prettier": "prettier --no-semi --single-quote --print-width 120 --parser typescript --write \"{src,test}/**/*.ts\"",
     "test": "npm run prettier && npm run lint && npm run typings-checker && npm run jest && npm run docs",
-    "clean": "rm -rf lib/*",
-    "build": "npm run clean && tsc && tsc -p tsconfig.es6.json",
+    "clean": "rm -rf lib/* es6/*",
+    "prebuild": "npm run clean",
+    "build": "tsc -p ./tsconfig.build.json && tsc -p ./tsconfig.build-es6.json",
     "prepublish": "npm run build",
-    "docs": "docs-ts"
+    "docs": "docs-ts",
+    "postbuild": "import-path-rewrite"
   },
   "repository": {
     "type": "git",
@@ -39,15 +41,16 @@
   "devDependencies": {
     "@types/jest": "^22.2.2",
     "@types/node": "^10.12.21",
-    "docs-ts": "0.0.1",
+    "docs-ts": "^0.3.0",
     "fp-ts": "^2.0.0",
-    "jest": "^22.4.3",
+    "import-path-rewrite": "github:gcanti/import-path-rewrite",
+    "jest": "^24.8.0",
     "monocle-ts": "^2.0.0",
     "prettier": "^1.13.5",
-    "ts-jest": "^22.4.2",
+    "ts-jest": "^24.0.2",
     "ts-node": "3.3.0",
-    "tslint": "4.4.2",
-    "tslint-config-standard": "4.0.0",
+    "tslint": "^5.9.1",
+    "tslint-config-standard": "^7.0.0",
     "typescript": "^3.5.1",
     "typings-checker": "^2.0.0"
   },
@@ -60,29 +63,5 @@
     "typescript",
     "newtype",
     "functional-programming"
-  ],
-  "jest": {
-    "globals": {
-      "ts-jest": {
-        "skipBabel": true
-      }
-    },
-    "collectCoverage": true,
-    "transform": {
-      "^.+\\.tsx?$": "ts-jest"
-    },
-    "testRegex": "test",
-    "moduleFileExtensions": [
-      "ts",
-      "js"
-    ],
-    "coverageThreshold": {
-      "global": {
-        "branches": 100,
-        "functions": 100,
-        "lines": 100,
-        "statements": 0
-      }
-    }
-  }
+  ]
 }

@@ -1,3 +1,6 @@
+/**
+ * @since 0.2.0
+ */
 import { Field } from 'fp-ts/lib/Field'
 import { identity, Predicate, unsafeCoerce } from 'fp-ts/lib/function'
 import { Monoid } from 'fp-ts/lib/Monoid'
