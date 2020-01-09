@@ -1,3 +1,6 @@
+/**
+ * @since 0.2.0
+ */
 import { Prism } from 'monocle-ts'
 import { Concat, prism } from '.'
 import { isNonPositiveInteger, NonPositiveInteger } from './NonPositiveInteger'

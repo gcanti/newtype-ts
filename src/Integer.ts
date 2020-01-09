@@ -1,3 +1,6 @@
+/**
+ * @since 0.2.0
+ */
 import { Newtype, prism } from '.'
 import { Prism } from 'monocle-ts'
 
