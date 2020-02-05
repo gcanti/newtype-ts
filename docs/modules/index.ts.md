@@ -18,15 +18,15 @@ Added in v0.2.0
 - [AnyNewtype (type alias)](#anynewtype-type-alias)
 - [CarrierOf (type alias)](#carrierof-type-alias)
 - [URIOf (type alias)](#uriof-type-alias)
-- [getEq (function)](#geteq-function)
-- [getField (function)](#getfield-function)
-- [getMonoid (function)](#getmonoid-function)
-- [getOrd (function)](#getord-function)
-- [getRing (function)](#getring-function)
-- [getSemigroup (function)](#getsemigroup-function)
-- [getSemiring (function)](#getsemiring-function)
-- [iso (function)](#iso-function)
-- [prism (function)](#prism-function)
+- [getEq](#geteq)
+- [getField](#getfield)
+- [getMonoid](#getmonoid)
+- [getOrd](#getord)
+- [getRing](#getring)
+- [getSemigroup](#getsemigroup)
+- [getSemiring](#getsemiring)
+- [iso](#iso)
+- [prism](#prism)
 
 ---
 
@@ -94,7 +94,7 @@ export type URIOf<N extends AnyNewtype> = N['_URI']
 
 Added in v0.2.0
 
-# getEq (function)
+# getEq
 
 **Signature**
 
@@ -104,7 +104,7 @@ export const getEq = <S extends AnyNewtype>(S: Eq<CarrierOf<S>>): Eq<S> => ...
 
 Added in v0.3.0
 
-# getField (function)
+# getField
 
 **Signature**
 
@@ -114,7 +114,7 @@ export const getField = <S extends AnyNewtype>(F: Field<CarrierOf<S>>): Field<S>
 
 Added in v0.2.0
 
-# getMonoid (function)
+# getMonoid
 
 **Signature**
 
@@ -124,7 +124,7 @@ export const getMonoid = <S extends AnyNewtype>(M: Monoid<CarrierOf<S>>): Monoid
 
 Added in v0.2.0
 
-# getOrd (function)
+# getOrd
 
 **Signature**
 
@@ -134,7 +134,7 @@ export const getOrd = <S extends AnyNewtype>(O: Ord<CarrierOf<S>>): Ord<S> => ..
 
 Added in v0.2.0
 
-# getRing (function)
+# getRing
 
 **Signature**
 
@@ -144,7 +144,7 @@ export const getRing = <S extends AnyNewtype>(R: Ring<CarrierOf<S>>): Ring<S> =>
 
 Added in v0.2.0
 
-# getSemigroup (function)
+# getSemigroup
 
 **Signature**
 
@@ -154,7 +154,7 @@ export const getSemigroup = <S extends AnyNewtype>(S: Semigroup<CarrierOf<S>>): 
 
 Added in v0.2.0
 
-# getSemiring (function)
+# getSemiring
 
 **Signature**
 
@@ -164,7 +164,7 @@ export const getSemiring = <S extends AnyNewtype>(S: Semiring<CarrierOf<S>>): Se
 
 Added in v0.2.0
 
-# iso (function)
+# iso
 
 **Signature**
 
@@ -174,7 +174,7 @@ export function iso<S extends AnyNewtype>(): Iso<S, CarrierOf<S>> { ... }
 
 Added in v0.2.0
 
-# prism (function)
+# prism
 
 **Signature**
 

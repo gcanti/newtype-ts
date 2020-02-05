@@ -13,8 +13,8 @@ Added in v0.2.0
 <h2 class="text-delta">Table of contents</h2>
 
 - [NonEmptyString (interface)](#nonemptystring-interface)
-- [prismNonEmptyString (constant)](#prismnonemptystring-constant)
-- [isNonEmptyString (function)](#isnonemptystring-function)
+- [isNonEmptyString](#isnonemptystring)
+- [prismNonEmptyString](#prismnonemptystring)
 
 ---
 
@@ -28,22 +28,22 @@ export interface NonEmptyString extends Newtype<{ readonly NonEmptyString: uniqu
 
 Added in v0.2.0
 
-# prismNonEmptyString (constant)
-
-**Signature**
-
-```ts
-export const prismNonEmptyString: Prism<string, NonEmptyString> = ...
-```
-
-Added in v0.2.0
-
-# isNonEmptyString (function)
+# isNonEmptyString
 
 **Signature**
 
 ```ts
 export const isNonEmptyString = (s: string) => ...
+```
+
+Added in v0.2.0
+
+# prismNonEmptyString
+
+**Signature**
+
+```ts
+export const prismNonEmptyString: Prism<string, NonEmptyString> = ...
 ```
 
 Added in v0.2.0

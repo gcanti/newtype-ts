@@ -13,8 +13,8 @@ Added in v0.2.0
 <h2 class="text-delta">Table of contents</h2>
 
 - [NonZeroInteger (interface)](#nonzerointeger-interface)
-- [prismNonZeroInteger (constant)](#prismnonzerointeger-constant)
-- [isNonZeroInteger (function)](#isnonzerointeger-function)
+- [isNonZeroInteger](#isnonzerointeger)
+- [prismNonZeroInteger](#prismnonzerointeger)
 
 ---
 
@@ -28,22 +28,22 @@ export interface NonZeroInteger extends Concat<NonZero, Integer> {}
 
 Added in v0.2.0
 
-# prismNonZeroInteger (constant)
-
-**Signature**
-
-```ts
-export const prismNonZeroInteger: Prism<number, NonZeroInteger> = ...
-```
-
-Added in v0.2.0
-
-# isNonZeroInteger (function)
+# isNonZeroInteger
 
 **Signature**
 
 ```ts
 export const isNonZeroInteger = (n: number) => ...
+```
+
+Added in v0.2.0
+
+# prismNonZeroInteger
+
+**Signature**
+
+```ts
+export const prismNonZeroInteger: Prism<number, NonZeroInteger> = ...
 ```
 
 Added in v0.2.0

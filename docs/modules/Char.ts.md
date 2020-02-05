@@ -13,8 +13,8 @@ Added in v0.2.0
 <h2 class="text-delta">Table of contents</h2>
 
 - [Char (interface)](#char-interface)
-- [prismChar (constant)](#prismchar-constant)
-- [isChar (function)](#ischar-function)
+- [isChar](#ischar)
+- [prismChar](#prismchar)
 
 ---
 
@@ -28,22 +28,22 @@ export interface Char extends Newtype<URIOf<NonEmptyString> & { readonly Length:
 
 Added in v0.2.0
 
-# prismChar (constant)
-
-**Signature**
-
-```ts
-export const prismChar: Prism<string, Char> = ...
-```
-
-Added in v0.2.0
-
-# isChar (function)
+# isChar
 
 **Signature**
 
 ```ts
 export const isChar = (s: string) => ...
+```
+
+Added in v0.2.0
+
+# prismChar
+
+**Signature**
+
+```ts
+export const prismChar: Prism<string, Char> = ...
 ```
 
 Added in v0.2.0

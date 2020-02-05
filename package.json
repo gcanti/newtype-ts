@@ -1,6 +1,6 @@
 {
   "name": "newtype-ts",
-  "version": "0.3.3",
+  "version": "0.3.4",
   "description": "Implementation of newtypes in TypeScript",
   "files": [
     "lib",
@@ -41,7 +41,7 @@
   "devDependencies": {
     "@types/jest": "^22.2.2",
     "@types/node": "^10.12.21",
-    "docs-ts": "^0.3.0",
+    "docs-ts": "^0.3.4",
     "fp-ts": "^2.0.0",
     "import-path-rewrite": "github:gcanti/import-path-rewrite",
     "jest": "^24.8.0",

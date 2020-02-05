@@ -13,8 +13,8 @@ Added in v0.2.0
 <h2 class="text-delta">Table of contents</h2>
 
 - [NonZero (interface)](#nonzero-interface)
-- [prismNonZero (constant)](#prismnonzero-constant)
-- [isNonZero (function)](#isnonzero-function)
+- [isNonZero](#isnonzero)
+- [prismNonZero](#prismnonzero)
 
 ---
 
@@ -28,22 +28,22 @@ export interface NonZero extends Newtype<{ readonly NonZero: unique symbol }, nu
 
 Added in v0.2.0
 
-# prismNonZero (constant)
-
-**Signature**
-
-```ts
-export const prismNonZero: Prism<number, NonZero> = ...
-```
-
-Added in v0.2.0
-
-# isNonZero (function)
+# isNonZero
 
 **Signature**
 
 ```ts
 export const isNonZero = (n: number) => ...
+```
+
+Added in v0.2.0
+
+# prismNonZero
+
+**Signature**
+
+```ts
+export const prismNonZero: Prism<number, NonZero> = ...
 ```
 
 Added in v0.2.0

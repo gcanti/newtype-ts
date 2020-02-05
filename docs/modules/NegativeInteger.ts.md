@@ -13,8 +13,8 @@ Added in v0.2.0
 <h2 class="text-delta">Table of contents</h2>
 
 - [NegativeInteger (interface)](#negativeinteger-interface)
-- [prismNegativeInteger (constant)](#prismnegativeinteger-constant)
-- [isNegativeInteger (function)](#isnegativeinteger-function)
+- [isNegativeInteger](#isnegativeinteger)
+- [prismNegativeInteger](#prismnegativeinteger)
 
 ---
 
@@ -28,22 +28,22 @@ export interface NegativeInteger extends Concat<NonZero, NonPositiveInteger> {}
 
 Added in v0.2.0
 
-# prismNegativeInteger (constant)
-
-**Signature**
-
-```ts
-export const prismNegativeInteger: Prism<number, NegativeInteger> = ...
-```
-
-Added in v0.2.0
-
-# isNegativeInteger (function)
+# isNegativeInteger
 
 **Signature**
 
 ```ts
 export const isNegativeInteger = (n: number) => ...
+```
+
+Added in v0.2.0
+
+# prismNegativeInteger
+
+**Signature**
+
+```ts
+export const prismNegativeInteger: Prism<number, NegativeInteger> = ...
 ```
 
 Added in v0.2.0

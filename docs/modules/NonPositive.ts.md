@@ -13,8 +13,8 @@ Added in v0.2.0
 <h2 class="text-delta">Table of contents</h2>
 
 - [NonPositive (interface)](#nonpositive-interface)
-- [prismNonPositive (constant)](#prismnonpositive-constant)
-- [isNonPositive (function)](#isnonpositive-function)
+- [isNonPositive](#isnonpositive)
+- [prismNonPositive](#prismnonpositive)
 
 ---
 
@@ -28,22 +28,22 @@ export interface NonPositive extends Newtype<{ readonly NonPositive: unique symb
 
 Added in v0.2.0
 
-# prismNonPositive (constant)
-
-**Signature**
-
-```ts
-export const prismNonPositive: Prism<number, NonPositive> = ...
-```
-
-Added in v0.2.0
-
-# isNonPositive (function)
+# isNonPositive
 
 **Signature**
 
 ```ts
 export const isNonPositive = (n: number) => ...
+```
+
+Added in v0.2.0
+
+# prismNonPositive
+
+**Signature**
+
+```ts
+export const prismNonPositive: Prism<number, NonPositive> = ...
 ```
 
 Added in v0.2.0
