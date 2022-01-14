@@ -74,7 +74,9 @@ export const getField = <S extends AnyNewtype>(F: Field<CarrierOf<S>>): Field<S>
 // isos
 //
 
-const anyIso = new Iso<any, any>(unsafeCoerce, unsafeCoerce)
+const anyIso = 
+  /*#__PURE__*/
+  new Iso<any, any>(unsafeCoerce, unsafeCoerce)
 
 /**
  * @since 0.2.0
