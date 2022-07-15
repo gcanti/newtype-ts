@@ -98,7 +98,7 @@ export interface Concat<N1 extends Newtype<object, any>, N2 extends Newtype<obje
 /**
  * @since 0.2.0
  */
-export interface Extends<N extends AnyNewtype, Tags extends object> extends Newtype<Tags & URIOf<N>, CarrierOf<N>> {}
+export type Extends<N extends AnyNewtype, Tags extends object> = Newtype<Tags & URIOf<N>, CarrierOf<N>>
 
 /**
  * @since 0.2.0
