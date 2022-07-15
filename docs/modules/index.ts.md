@@ -13,10 +13,10 @@ Added in v0.2.0
 <h2 class="text-delta">Table of contents</h2>
 
 - [Concat (interface)](#concat-interface)
-- [Extends (interface)](#extends-interface)
 - [Newtype (interface)](#newtype-interface)
 - [AnyNewtype (type alias)](#anynewtype-type-alias)
 - [CarrierOf (type alias)](#carrierof-type-alias)
+- [Extends (type alias)](#extends-type-alias)
 - [URIOf (type alias)](#uriof-type-alias)
 - [getEq](#geteq)
 - [getField](#getfield)
@@ -37,16 +37,6 @@ Added in v0.2.0
 ```ts
 export interface Concat<N1 extends Newtype<object, any>, N2 extends Newtype<object, CarrierOf<N1>>>
   extends Newtype<URIOf<N1> & URIOf<N2>, CarrierOf<N1>> {}
-```
-
-Added in v0.2.0
-
-# Extends (interface)
-
-**Signature**
-
-```ts
-export interface Extends<N extends AnyNewtype, Tags extends object> extends Newtype<Tags & URIOf<N>, CarrierOf<N>> {}
 ```
 
 Added in v0.2.0
@@ -80,6 +70,16 @@ Added in v0.2.0
 
 ```ts
 export type CarrierOf<N extends AnyNewtype> = N['_A']
+```
+
+Added in v0.2.0
+
+# Extends (type alias)
+
+**Signature**
+
+```ts
+export type Extends<N extends AnyNewtype, Tags extends object> = Newtype<Tags & URIOf<N>, CarrierOf<N>>
 ```
 
 Added in v0.2.0
